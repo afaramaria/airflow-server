@@ -38,6 +38,8 @@ services:
         volumes:
             - "${PROJECT_DIR:-..}/dags:/opt/airflow/dags"
             - "../logs:/opt/airflow/logs"
+            - ${PROJECT_DIR:-..}/configs:/configs
+            - ${PROJECT_DIR:-..}/data:/data
     airflow-webserver:
         image: my-custom-airflow:${AIRFLOW_VERSION:-2.4.1}
         build:
@@ -63,6 +65,8 @@ services:
         volumes:
             - ${PROJECT_DIR:-..}/dags:/opt/airflow/dags
             - ../logs:/opt/airflow/logs
+            - ${PROJECT_DIR:-..}/configs:/configs
+            - ${PROJECT_DIR:-..}/data:/data
         ports:
             - "8080:8080"
     airflow-init:
